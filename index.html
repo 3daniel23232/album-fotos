@@ -40,7 +40,7 @@
     }
 
     audio {
-      margin-top: 20px;
+      display: none; /* Esconde o player */
     }
 
     .footer {
@@ -62,7 +62,7 @@
     <p>Eu adoro muito você, sou grato por ter você em minha vida.<br>
     Obrigado por ser essa pessoa maravilhosa. ❤️</p>
 
-    <audio controls autoplay loop>
+    <audio id="musica" loop>
       <source src="musica.mp3" type="audio/mpeg">
       Seu navegador não suporta áudio.
     </audio>
@@ -73,6 +73,17 @@
   <div class="footer">
     Feito com carinho por Daniel 💘
   </div>
+
+  <script>
+    document.addEventListener('click', function () {
+      const audio = document.getElementById('musica');
+      if (audio.paused) {
+        audio.play().catch((err) => {
+          console.log("Erro ao iniciar o áudio:", err);
+        });
+      }
+    }, { once: true });
+  </script>
 
 </body>
 </html>
