@@ -10,11 +10,12 @@
       text-align: center;
       padding: 20px;
       color: #a00050;
+      margin: 0;
     }
 
     h1 {
-      font-size: 2.5em;
-      margin-top: 20px;
+      font-size: 2em;
+      margin-top: 10px;
     }
 
     .decoracao {
@@ -22,28 +23,60 @@
       margin: 10px 0;
     }
 
-    img {
-      width: 300px;
+    /* Galeria responsiva */
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      justify-items: center;
+      margin-top: 20px;
+    }
+
+    .galeria img {
+      width: 100%;
+      max-width: 300px;
       border-radius: 15px;
-      margin-top: 15px;
       box-shadow: 0 0 15px pink;
+      object-fit: cover;
     }
 
     .mensagem {
       margin-top: 25px;
-      font-size: 1.2em;
+      font-size: 1.1em;
       color: #d10068;
       background-color: #fff;
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 0 10px #ffcce5;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
+    /* Player de áudio ajustado */
+    audio {
+      width: 100%;
+      max-width: 300px;
+      margin-top: 15px;
+    }
 
     .footer {
       margin-top: 40px;
       font-size: 0.9em;
       color: #888;
+      padding-bottom: 20px;
+    }
+
+    /* Ajustes para telas pequenas */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5em;
+      }
+
+      .mensagem {
+        font-size: 1em;
+        padding: 15px;
+      }
     }
   </style>
 </head>
@@ -52,33 +85,31 @@
   <div class="decoracao">❤️&#x1F406❤️</div>
 
   <h1>💌 Album Quezia e Daniel 💌</h1>
-  <p>conforme formos evouluindo iremos atualizar aqui💘</p>
+  <p>Conforme formos evoluindo, iremos atualizar aqui 💘</p>
+
+  <div class="galeria">
     <img src="foto_quezia_daniel.jpg" alt="Quezia e Daniel"> 
     <img src="foto01.jpeg" alt="Quezia e Daniel"> 
     <img src="foto02.jpeg" alt="Quezia e Daniel"> 
     <img src="foto03.jpeg" alt="Quezia e Daniel"> 
     <img src="foto04.jpeg" alt="Quezia e Daniel"> 
-
-
+  </div>
 
   <div class="mensagem">
     <p>Eu adoro muito você, sou grato por ter você em minha vida.<br>
     Obrigado por ser essa pessoa maravilhosa. ❤️</p>
 
     <audio controls>
-  <source src="musica.mp3" type="audio/mp3">
-  Seu navegador não suporta áudio.
-  </audio>
-
+      <source src="musica.mp3" type="audio/mp3">
+      Seu navegador não suporta áudio.
+    </audio>
   </div>
 
   <div class="decoracao">❤️&#x1F406❤️</div>
 
   <div class="footer">
-    Feito com carinho por Daniel para demonstrar o quanto te amo e deixar nossas lembranças aqui💘
+    Feito com carinho por Daniel para demonstrar o quanto te amo e deixar nossas lembranças aqui 💘
   </div>
-
-
 
 </body>
 </html>
