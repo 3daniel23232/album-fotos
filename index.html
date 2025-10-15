@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Cartão para Quezia 💖</title>
+  <title>Album 💖</title>
   <style>
     body {
       background-color: #fff0f5;
@@ -39,9 +39,6 @@
       box-shadow: 0 0 10px #ffcce5;
     }
 
-    audio {
-      display: none; /* Esconde o player */
-    }
 
     .footer {
       margin-top: 40px;
@@ -52,38 +49,36 @@
 </head>
 <body>
 
-  <div class="decoracao">🐻❤️🐻❤️🐻</div>
+  <div class="decoracao">❤️&#x1F406❤️</div>
 
-  <h1>💌 Para Quezia 💌</h1>
+  <h1>💌 Album Quezia e Daniel 💌</h1>
+  <p>conforme formos evouluindo iremos atualizar aqui💘</p>
+    <img src="foto_quezia_daniel.jpg" alt="Quezia e Daniel"> 
+    <img src="foto01.jpeg" alt="Quezia e Daniel"> 
+    <img src="foto02.jpeg" alt="Quezia e Daniel"> 
+    <img src="foto03.jpeg" alt="Quezia e Daniel"> 
+    <img src="foto04.jpeg" alt="Quezia e Daniel"> 
 
-  <img src="foto_quezia_daniel.jpg" alt="Quezia e Daniel">
+
 
   <div class="mensagem">
     <p>Eu adoro muito você, sou grato por ter você em minha vida.<br>
     Obrigado por ser essa pessoa maravilhosa. ❤️</p>
 
-    <audio id="musica" loop>
-      <source src="musica.mp3" type="audio/mpeg">
-      Seu navegador não suporta áudio.
-    </audio>
+    <audio controls>
+  <source src="musica.mp3" type="audio/mp3">
+  Seu navegador não suporta áudio.
+  </audio>
+
   </div>
 
-  <div class="decoracao">❤️🐻❤️🐻❤️</div>
+  <div class="decoracao">❤️&#x1F406❤️</div>
 
   <div class="footer">
-    Feito com carinho por Daniel 💘
+    Feito com carinho por Daniel para demonstrar o quanto te amo e deixar nossas lembranças aqui💘
   </div>
 
-  <script>
-    document.addEventListener('click', function () {
-      const audio = document.getElementById('musica');
-      if (audio.paused) {
-        audio.play().catch((err) => {
-          console.log("Erro ao iniciar o áudio:", err);
-        });
-      }
-    }, { once: true });
-  </script>
+
 
 </body>
 </html>
