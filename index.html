@@ -11,6 +11,7 @@
       padding: 20px;
       color: #a00050;
       margin: 0;
+      padding-bottom: 100px; /* espaço pro player fixo */
     }
 
     h1 {
@@ -23,10 +24,10 @@
       margin: 10px 0;
     }
 
-    /* Galeria responsiva */
+    /* Galeria com fotos do mesmo tamanho */
     .galeria {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 15px;
       justify-items: center;
       margin-top: 20px;
@@ -34,10 +35,11 @@
 
     .galeria img {
       width: 100%;
+      height: 250px;              /* altura fixa */
       max-width: 300px;
       border-radius: 15px;
       box-shadow: 0 0 15px pink;
-      object-fit: cover;
+      object-fit: cover;          /* corta mantendo proporção */
     }
 
     .mensagem {
@@ -53,24 +55,39 @@
       margin-right: auto;
     }
 
-    /* Player de áudio ajustado */
-    audio {
+    /* Player fixo no rodapé */
+    .player-fixo {
+      position: fixed;
+      bottom: 0;
+      left: 0;
       width: 100%;
-      max-width: 300px;
-      margin-top: 15px;
+      background-color: #fff0f5;
+      box-shadow: 0 -2px 10px rgba(255, 182, 193, 0.7);
+      padding: 10px 0;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    .player-fixo audio {
+      width: 90%;
+      max-width: 400px;
     }
 
     .footer {
       margin-top: 40px;
       font-size: 0.9em;
       color: #888;
-      padding-bottom: 20px;
+      padding-bottom: 60px; /* espaço pro player fixo */
     }
 
-    /* Ajustes para telas pequenas */
+    /* Ajuste para telas pequenas */
     @media (max-width: 600px) {
       h1 {
         font-size: 1.5em;
+      }
+
+      .galeria img {
+        height: 200px;
       }
 
       .mensagem {
@@ -98,17 +115,20 @@
   <div class="mensagem">
     <p>Eu adoro muito você, sou grato por ter você em minha vida.<br>
     Obrigado por ser essa pessoa maravilhosa. ❤️</p>
-
-    <audio controls>
-      <source src="musica.mp3" type="audio/mp3">
-      Seu navegador não suporta áudio.
-    </audio>
   </div>
 
   <div class="decoracao">❤️&#x1F406❤️</div>
 
   <div class="footer">
     Feito com carinho por Daniel para demonstrar o quanto te amo e deixar nossas lembranças aqui 💘
+  </div>
+
+  <!-- Player fixo no rodapé -->
+  <div class="player-fixo">
+    <audio controls>
+      <source src="musica.mp3" type="audio/mp3">
+      Seu navegador não suporta áudio.
+    </audio>
   </div>
 
 </body>
