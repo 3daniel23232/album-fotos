@@ -1,203 +1,610 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3 Mêses de Amor 💖</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daniel & Quezia 💖</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
   <style>
-    body {
-      background: linear-gradient(to bottom right, #fff0f5, #ffe6f0);
-      font-family: 'Poppins', Arial, sans-serif;
-      text-align: center;
-      padding: 15px;
-      color: #a00050;
-      margin: 0;
-      padding-bottom: 100px;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    h1 {
-      font-size: 1.8em;
-      margin: 10px 0;
-      animation: fadeIn 1.5s ease-in-out;
-      line-height: 1.3em;
+    body{
+      font-family: 'Poppins', sans-serif;
+      min-height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+      url('foto_quezia_daniel.jpg') center/cover fixed;
+      overflow-x:hidden;
+      color:white;
     }
 
-    .decoracao {
-      font-size: 1.8em;
-      margin: 8px 0;
-      animation: pulse 2s infinite;
+    /* LOGIN */
+
+    .login-screen{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
     }
 
-    .subtitulo {
-      font-size: 1em;
-      color: #d10068;
-      margin-bottom: 15px;
+    .login-card{
+      width:100%;
+      max-width:420px;
+      backdrop-filter: blur(15px);
+      background: rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.2);
+      border-radius:30px;
+      padding:40px 30px;
+      box-shadow:0 10px 40px rgba(0,0,0,.35);
+      animation:fadeUp 1s ease;
     }
 
-    /* Galeria responsiva */
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 10px;
-      justify-items: center;
-      margin-top: 15px;
+    .titulo-login{
+      font-family:'Great Vibes', cursive;
+      font-size:3rem;
+      text-align:center;
+      margin-bottom:10px;
     }
 
-    .galeria img {
-      width: 100%;
-      height: 180px;
-      max-width: 250px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(255, 182, 193, 0.8);
-      object-fit: cover;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .sub-login{
+      text-align:center;
+      opacity:.9;
+      margin-bottom:30px;
     }
 
-    .galeria img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 18px rgba(255, 105, 180, 0.9);
+    .form-control{
+      height:55px;
+      border-radius:15px;
+      border:none;
+      background:rgba(255,255,255,.15);
+      color:white;
+      padding-left:15px;
     }
 
-    .mensagem {
-      margin-top: 20px;
-      font-size: 1em;
-      color: #d10068;
-      background-color: #fff;
-      padding: 18px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.5em;
-      animation: fadeInUp 1.3s ease;
+    .form-control::placeholder{
+      color:rgba(255,255,255,.75);
     }
 
-    .player-fixo {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #fff0f5;
-      box-shadow: 0 -2px 10px rgba(255, 182, 193, 0.7);
-      padding: 10px 0;
-      text-align: center;
-      z-index: 1000;
+    .form-control:focus{
+      background:rgba(255,255,255,.20);
+      color:white;
+      box-shadow:none;
+      border:1px solid #ff9acb;
     }
 
-    .player-fixo audio {
-      width: 90%;
-      max-width: 350px;
+    .btn-love{
+      width:100%;
+      height:55px;
+      border:none;
+      border-radius:15px;
+      background:linear-gradient(45deg,#ff4f9a,#ff84b7);
+      color:white;
+      font-weight:600;
+      transition:.3s;
+      font-size:1rem;
     }
 
-    .footer {
-      margin-top: 30px;
-      font-size: 0.8em;
-      color: #888;
-      padding-bottom: 60px;
+    .btn-love:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 20px rgba(255,105,180,.4);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .erro{
+      color:#ffd2e7;
+      text-align:center;
+      margin-top:15px;
+      display:none;
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* SITE */
+
+    #site{
+      display:none;
+      animation:fadeIn 1s ease;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:30px;
     }
 
-    /* Ajuste fino para celulares menores */
-    @media (max-width: 450px) {
-      h1 {
-        font-size: 1.5em;
+    .hero-content{
+      max-width:900px;
+      backdrop-filter: blur(10px);
+      background:rgba(0,0,0,.35);
+      padding:50px 30px;
+      border-radius:35px;
+      border:1px solid rgba(255,255,255,.15);
+      box-shadow:0 10px 40px rgba(0,0,0,.4);
+    }
+
+    .hero h1{
+      font-family:'Great Vibes', cursive;
+      font-size:5rem;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      font-size:1.1rem;
+      line-height:1.9;
+      color:#f3f3f3;
+    }
+
+    .contador{
+      margin-top:30px;
+      font-size:1.3rem;
+      font-weight:600;
+      color:#ffd4e8;
+    }
+
+    /* GALERIA */
+
+    .galeria-section{
+      padding:80px 20px;
+      background:linear-gradient(to bottom,#1b0a12,#2b0f1d);
+    }
+
+    .titulo-section{
+      text-align:center;
+      margin-bottom:50px;
+    }
+
+    .titulo-section h2{
+      font-size:3rem;
+      font-family:'Great Vibes', cursive;
+    }
+
+    .foto-card{
+      overflow:hidden;
+      border-radius:25px;
+      position:relative;
+      transition:.4s;
+      box-shadow:0 10px 25px rgba(0,0,0,.3);
+    }
+
+    .foto-card img{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+      transition:.5s;
+    }
+
+    .foto-card:hover img{
+      transform:scale(1.08);
+    }
+
+    .foto-card::before{
+      content:"💖";
+      position:absolute;
+      top:15px;
+      right:15px;
+      z-index:2;
+      font-size:1.3rem;
+    }
+
+    /* MENSAGEM */
+
+    .mensagem-section{
+      padding:90px 20px;
+      background:#12070d;
+    }
+
+    .mensagem-box{
+      max-width:950px;
+      margin:auto;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      padding:50px 35px;
+      border-radius:30px;
+      backdrop-filter:blur(10px);
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+
+    .mensagem-box p{
+      line-height:2;
+      color:#f0f0f0;
+      margin-bottom:25px;
+      font-size:1.05rem;
+    }
+
+    /* PLAYER */
+
+    .player{
+      position:fixed;
+      bottom:15px;
+      left:50%;
+      transform:translateX(-50%);
+      width:90%;
+      max-width:500px;
+      background:rgba(255,255,255,.12);
+      backdrop-filter:blur(10px);
+      padding:15px;
+      border-radius:20px;
+      z-index:999;
+      border:1px solid rgba(255,255,255,.15);
+      box-shadow:0 10px 25px rgba(0,0,0,.3);
+    }
+
+    .player audio{
+      width:100%;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#0a0407;
+      text-align:center;
+      padding:40px 20px 120px;
+      color:#bbb;
+    }
+
+    /* ANIMAÇÕES */
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+      }
+      to{
+        opacity:1;
+      }
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:3.5rem;
       }
 
-      .galeria img {
-        height: 150px;
+      .titulo-login{
+        font-size:2.4rem;
       }
 
-      .mensagem {
-        font-size: 0.95em;
-        padding: 15px;
+      .hero-content{
+        padding:35px 20px;
       }
 
-      .subtitulo {
-        font-size: 0.9em;
+      .mensagem-box{
+        padding:35px 20px;
       }
+
+      .foto-card img{
+        height:250px;
+      }
+
     }
+
   </style>
 </head>
 <body>
 
-  <div class="decoracao">❤️&#x1F406❤️</div>
+  <!-- LOGIN -->
+  <section class="login-screen" id="loginScreen">
 
-  <h1>💌 3 Mêses de Amor: Quezia & Daniel 💌</h1>
-  <p class="subtitulo">3 mêses cheio de carinho, risadas e amor verdadeiro 💘</p>
+    <div class="login-card">
 
-  <div class="galeria">
-    <img src="foto_quezia_daniel.jpg" alt="Quezia e Daniel"> 
-    <img src="foto01.jpeg" alt="Quezia e Daniel"> 
-    <img src="foto02.jpeg" alt="Quezia e Daniel"> 
-    <img src="foto03.jpeg" alt="Quezia e Daniel"> 
-    <img src="foto04.jpeg" alt="Quezia e Daniel">
-    <img src="foto05.jpeg" alt="Quezia e Daniel"> 
-    <img src="foto06.jpeg" alt="Quezia e Daniel"> 
-    <img src="foto07.jpeg" alt="Quezia e Daniel"> 
-    <img src="foto08.jpeg" alt="Quezia e Daniel"> 
-    <img src="foto09.jpeg" alt="Quezia e Daniel"> 
-    <img src="foto10.jpeg" alt="Quezia e Daniel"> 
-    <img src="foto11.jpeg" alt="Quezia e Daniel"> 
-    <img src="foto12.jpeg" alt="Quezia e Daniel"> 
-    <img src="foto13.jpeg" alt="Quezia e Daniel"> 
-    <img src="foto14.jpeg" alt="Quezia e Daniel"> 
-    <img src="foto15.jpeg" alt="Quezia e Daniel"> 
+      <h1 class="titulo-login">Nosso Amor 💖</h1>
+
+      <p class="sub-login">
+        Entre para acessar nosso cantinho especial ✨
+      </p>
+
+      <div class="mb-3">
+        <input type="text" id="usuario" class="form-control" placeholder="Usuário">
+      </div>
+
+      <div class="mb-3">
+        <input type="password" id="senha" class="form-control" placeholder="Senha">
+      </div>
+
+      <button class="btn-love" onclick="login()">
+        <i class="bi bi-heart-fill"></i>
+        Entrar
+      </button>
+
+      <div class="erro" id="erro">
+        Usuário ou senha incorretos 💔
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SITE -->
+  <div id="site">
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <h1>Quezia & Daniel 💕</h1>
+
+        <p>
+          8 meses ao lado da pessoa mais especial da minha vida.
+          Cada momento ao seu lado transformou meus dias em algo mais leve,
+          bonito e cheio de sentido.
+        </p>
+
+        <div class="contador">
+          ❤️ 8 meses de amor verdadeiro ❤️
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- GALERIA -->
+    <!-- GALERIA -->
+<section class="galeria-section">
+
+  <div class="container">
+
+    <div class="titulo-section">
+      <h2>Nossos Momentos ✨</h2>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- FOTO 01 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto01.jpeg" alt="Foto 01">
+        </div>
+      </div>
+
+      <!-- FOTO 02 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto02.jpeg" alt="Foto 02">
+        </div>
+      </div>
+
+      <!-- FOTO 03 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto03.jpeg" alt="Foto 03">
+        </div>
+      </div>
+
+      <!-- FOTO 04 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto04.jpeg" alt="Foto 04">
+        </div>
+      </div>
+
+      <!-- FOTO 05 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto05.jpeg" alt="Foto 05">
+        </div>
+      </div>
+
+      <!-- FOTO 06 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto06.jpeg" alt="Foto 06">
+        </div>
+      </div>
+
+      <!-- FOTO 07 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto07.jpeg" alt="Foto 07">
+        </div>
+      </div>
+
+      <!-- FOTO 08 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto08.jpeg" alt="Foto 08">
+        </div>
+      </div>
+
+      <!-- FOTO 09 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto09.jpeg" alt="Foto 09">
+        </div>
+      </div>
+
+      <!-- FOTO 10 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto10.jpeg" alt="Foto 10">
+        </div>
+      </div>
+
+      <!-- FOTO 11 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto11.jpeg" alt="Foto 11">
+        </div>
+      </div>
+
+      <!-- FOTO 12 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto12.jpeg" alt="Foto 12">
+        </div>
+      </div>
+
+      <!-- FOTO 13 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto13.jpeg" alt="Foto 13">
+        </div>
+      </div>
+
+      <!-- FOTO 14 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto14.jpeg" alt="Foto 14">
+        </div>
+      </div>
+
+      <!-- FOTO 15 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto15.jpeg" alt="Foto 15">
+        </div>
+      </div>
+
+      <!-- FOTO 16 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto16.jpeg" alt="Foto 16">
+        </div>
+      </div>
+
+      <!-- FOTO 17 -->
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="foto-card">
+          <img src="foto17.jpeg" alt="Foto 17">
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="mensagem">
-    <p>
-      Hoje celebramos <strong>3 mêses de namoro</strong> 💕<br><br>
-      Em 3 meses criamos histórias, risos e amor.
-      Que esse seja só o começo.
-    </p>
+</section>
 
-    <p>
-      <strong>Quezia</strong> ou melhor <strong>AMOR DA MINHA VIDA</strong> obrigado por ser essa pessoa incrível, carinhosa e verdadeira,
-      seu sorriso me dá paz, sua voz me acalma e seu amor me motiva todos os dias.
-    </p>
-    
-    <p>
-      Três meses ao seu lado e parece que a vida ganhou novas cores. Cada conversa, cada sorriso e cada momento contigo me mostram o quanto você é especial para mim. Em tão pouco tempo, você se tornou meu lugar de paz e alegria.Sou grato por cada detalhe, por quem você é e por tudo que construímos juntos até aqui. Que esses três meses sejam apenas o começo de uma história linda, cheia de amor, cumplicidade e sonhos compartilhados. Eu escolho você, hoje e sempre. 💖
-    </p>
+    <!-- MENSAGEM -->
+    <section class="mensagem-section">
 
-    <p>
-      Que este seja apenas o nosso começo .<br>
-      Te amo e sou muito grato por ter você. ❤️<br><br>
-      <strong>— Daniel 💖</strong>
-    </p>
+      <div class="mensagem-box">
 
-    <p>
-      <sub></sub>
-    </p>
+        <h2 class="text-center mb-5" style="font-family: 'Great Vibes', cursive; font-size:3rem;">
+          Para Você 💌
+        </h2>
+
+        <p>
+          Hoje celebramos nossos <strong>8 meses de namoro</strong>.
+          Parece pouco para quem vê de fora, mas para mim,
+          cada segundo ao seu lado vale uma vida inteira.
+        </p>
+
+        <p>
+          Você trouxe paz para meus dias,
+          luz para meus pensamentos
+          e sentido para coisas que antes pareciam vazias.
+        </p>
+
+        <p>
+          Obrigado por cada risada,
+          cada abraço,
+          cada conversa,
+          cada momento inesquecível.
+        </p>
+
+        <p>
+          Você é meu lugar favorito no mundo.
+          Minha melhor escolha.
+          Meu raio de luz nos dias difíceis.
+        </p>
+
+        <p>
+          Eu escolheria você mil vezes,
+          em mil vidas diferentes.
+        </p>
+
+        <p class="text-center mt-5">
+          <strong>
+            Eu te amo infinitamente 💖
+          </strong>
+        </p>
+
+        <p class="text-center">
+          — Daniel ✨
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- PLAYER -->
+    <div class="player">
+
+      <audio controls autoplay loop>
+        <source src="musica.mp3" type="audio/mp3">
+      </audio>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+
+      Feito com amor por Daniel para Quezia 💘
+
+    </footer>
+
   </div>
 
-  <div class="decoracao">❤️&#x1F406❤️</div>
+  <script>
 
-  <div class="footer">
-    Feito com amor por Daniel para celebrar e registrar nossos momentos, te amoo 💘
-  </div>
+function login(){
 
-  <div class="player-fixo">
-    <audio controls>
-      <source src="musica.mp3" type="audio/mp3">
-      Seu navegador não suporta áudio.
-    </audio>
-  </div>
+  // remove espaços e converte para minúsculo
+  const usuario = document
+    .getElementById("usuario")
+    .value
+    .trim()
+    .toLowerCase();
+
+  // remove espaços no começo/fim da senha
+  const senha = document
+    .getElementById("senha")
+    .value
+    .trim();
+
+  // login correto
+  if(usuario === "origem" && senha === "28092026"){
+
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("site").style.display = "block";
+
+  }else{
+
+    document.getElementById("erro").style.display = "block";
+
+  }
+
+}
+
+  </script>
 
 </body>
 </html>
