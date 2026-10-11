@@ -1,610 +1,587 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Daniel & Quezia 💖</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#12070d">
+  <title>Daniel &amp; Quezia 💖</title>
 
-  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    :root {
+      --rosa: #ff4f9a;
+      --rosa-claro: #ff9acb;
+      --rosa-palido: #ffd4e8;
+      --vinho: #12070d;
+      --vinho-2: #2b0f1d;
     }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-    body{
+    body {
       font-family: 'Poppins', sans-serif;
-      min-height:100vh;
+      min-height: 100vh;
+      color: #fff;
+      overflow-x: hidden;
+      background: var(--vinho);
+    }
+
+    .script { font-family: 'Great Vibes', cursive; font-weight: 400; }
+
+    /* ---------- LOGIN ---------- */
+    .login-screen {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
       background:
-      linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-      url('foto_quezia_daniel.jpg') center/cover fixed;
-      overflow-x:hidden;
-      color:white;
+        linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+        url('foto_quezia_daniel.jpg') center/cover no-repeat;
     }
-
-    /* LOGIN */
-
-    .login-screen{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-    }
-
-    .login-card{
-      width:100%;
-      max-width:420px;
+    .login-card {
+      width: 100%;
+      max-width: 420px;
       backdrop-filter: blur(15px);
-      background: rgba(255,255,255,0.12);
-      border:1px solid rgba(255,255,255,0.2);
-      border-radius:30px;
-      padding:40px 30px;
-      box-shadow:0 10px 40px rgba(0,0,0,.35);
-      animation:fadeUp 1s ease;
+      -webkit-backdrop-filter: blur(15px);
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 30px;
+      padding: 40px 28px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+      animation: fadeUp .9s ease;
+    }
+    .titulo-login { font-size: 3rem; text-align: center; margin-bottom: 8px; }
+    .sub-login { text-align: center; font-weight: 300; margin-bottom: 28px; }
+
+    .form-control {
+      height: 55px;
+      border-radius: 15px;
+      border: 1px solid transparent;
+      background: rgba(255,255,255,.15);
+      color: #fff;
+      padding-left: 16px;
+      font-size: 16px; /* evita zoom no iPhone */
+    }
+    .form-control::placeholder { color: rgba(255,255,255,.75); }
+    .form-control:focus {
+      background: rgba(255,255,255,.2);
+      color: #fff;
+      box-shadow: none;
+      border-color: var(--rosa-claro);
+    }
+    .senha-wrap { position: relative; }
+    .btn-olho {
+      position: absolute; right: 8px; top: 8px;
+      width: 40px; height: 40px;
+      border: none; background: transparent;
+      color: rgba(255,255,255,.85); font-size: 1.2rem;
     }
 
-    .titulo-login{
-      font-family:'Great Vibes', cursive;
-      font-size:3rem;
-      text-align:center;
-      margin-bottom:10px;
+    .btn-love {
+      width: 100%;
+      height: 55px;
+      border: none;
+      border-radius: 15px;
+      background: linear-gradient(45deg, var(--rosa), #ff84b7);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: .3s;
     }
+    .btn-love:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255,105,180,.4); }
+    .erro { color: var(--rosa-palido); text-align: center; margin-top: 16px; display: none; }
 
-    .sub-login{
-      text-align:center;
-      opacity:.9;
-      margin-bottom:30px;
+    /* ---------- SITE ---------- */
+    #site { display: none; animation: fadeIn 1s ease; }
+
+    .hero {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px 20px;
+      background:
+        linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.55)),
+        url('foto_quezia_daniel.jpg') center/cover no-repeat;
     }
-
-    .form-control{
-      height:55px;
-      border-radius:15px;
-      border:none;
-      background:rgba(255,255,255,.15);
-      color:white;
-      padding-left:15px;
-    }
-
-    .form-control::placeholder{
-      color:rgba(255,255,255,.75);
-    }
-
-    .form-control:focus{
-      background:rgba(255,255,255,.20);
-      color:white;
-      box-shadow:none;
-      border:1px solid #ff9acb;
-    }
-
-    .btn-love{
-      width:100%;
-      height:55px;
-      border:none;
-      border-radius:15px;
-      background:linear-gradient(45deg,#ff4f9a,#ff84b7);
-      color:white;
-      font-weight:600;
-      transition:.3s;
-      font-size:1rem;
-    }
-
-    .btn-love:hover{
-      transform:translateY(-3px);
-      box-shadow:0 10px 20px rgba(255,105,180,.4);
-    }
-
-    .erro{
-      color:#ffd2e7;
-      text-align:center;
-      margin-top:15px;
-      display:none;
-    }
-
-    /* SITE */
-
-    #site{
-      display:none;
-      animation:fadeIn 1s ease;
-    }
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:30px;
-    }
-
-    .hero-content{
-      max-width:900px;
+    .hero-content {
+      max-width: 880px;
       backdrop-filter: blur(10px);
-      background:rgba(0,0,0,.35);
-      padding:50px 30px;
-      border-radius:35px;
-      border:1px solid rgba(255,255,255,.15);
-      box-shadow:0 10px 40px rgba(0,0,0,.4);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(0,0,0,.35);
+      padding: 50px 30px;
+      border-radius: 35px;
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 10px 40px rgba(0,0,0,.4);
+    }
+    .hero h1 { font-size: 5rem; margin-bottom: 20px; line-height: 1.1; }
+    .hero p { font-size: 1.1rem; font-weight: 300; line-height: 1.9; color: #f3f3f3; }
+    .contador { margin-top: 28px; font-size: 1.3rem; font-weight: 600; color: var(--rosa-palido); }
+    .coracao {
+      display: inline-block; margin-top: 18px;
+      font-size: 2rem; color: var(--rosa);
+      animation: pulso 1.4s ease-in-out infinite;
     }
 
-    .hero h1{
-      font-family:'Great Vibes', cursive;
-      font-size:5rem;
-      margin-bottom:20px;
+    /* ---------- GALERIA ---------- */
+    .galeria-section {
+      padding: 80px 0;
+      background: linear-gradient(to bottom, #1b0a12, var(--vinho-2));
+    }
+    .titulo-section { text-align: center; margin-bottom: 45px; }
+    .titulo-section h2 { font-size: 3rem; }
+
+    .foto-card {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: none;
+      background: var(--vinho-2);
+      overflow: hidden;
+      border-radius: 25px;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0,0,0,.3);
+      cursor: pointer;
+    }
+    .foto-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s;
+    }
+    .foto-card:hover img { transform: scale(1.08); }
+    .foto-card:focus-visible { outline: 3px solid var(--rosa-claro); outline-offset: 3px; }
+    .foto-card::before {
+      content: "💖";
+      position: absolute; top: 12px; right: 14px; z-index: 2; font-size: 1.2rem;
     }
 
-    .hero p{
-      font-size:1.1rem;
-      line-height:1.9;
-      color:#f3f3f3;
+    /* ---------- LIGHTBOX ---------- */
+    .modal-content.lightbox {
+      background: rgba(10,4,7,.96);
+      border: none;
+      border-radius: 0;
+    }
+    .lb-body {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      height: 100vh; height: 100dvh;
+      padding: 56px 8px 48px;
+    }
+    .lb-body img {
+      max-width: 100%; max-height: 100%;
+      object-fit: contain;
+      border-radius: 14px;
+    }
+    .lb-btn {
+      position: absolute;
+      width: 46px; height: 46px;
+      border: none; border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      color: #fff; font-size: 1.4rem;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 3;
+    }
+    .lb-btn:hover { background: rgba(255,79,154,.6); }
+    .lb-prev { left: 10px; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 10px; top: 50%; transform: translateY(-50%); }
+    .lb-close { right: 12px; top: 10px; }
+    .lb-count { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-size: .9rem; color: #ddd; }
+
+    /* ---------- MENSAGEM ---------- */
+    .mensagem-section { padding: 90px 20px; background: var(--vinho); }
+    .mensagem-box {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 50px 35px;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .mensagem-box h2 { font-size: 3rem; text-align: center; margin-bottom: 40px; }
+    .mensagem-box p { line-height: 2; font-weight: 300; color: #f0f0f0; margin-bottom: 24px; font-size: 1.05rem; }
+    .mensagem-box strong { font-weight: 600; color: #fff; }
+    .assinatura { font-size: 2rem; text-align: center; }
+
+    /* ---------- PLAYER ---------- */
+    .player {
+      position: fixed;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 24px);
+      max-width: 500px;
+      background: rgba(43,15,29,.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 10px 14px;
+      border-radius: 20px;
+      z-index: 999;
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+    .player audio { width: 100%; height: 40px; display: block; }
+
+    footer {
+      background: #0a0407;
+      text-align: center;
+      padding: 40px 20px 120px;
+      color: #bbb;
+      font-weight: 300;
     }
 
-    .contador{
-      margin-top:30px;
-      font-size:1.3rem;
-      font-weight:600;
-      color:#ffd4e8;
+    /* ---------- ANIMAÇÕES ---------- */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes pulso { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
     }
 
-    /* GALERIA */
-
-    .galeria-section{
-      padding:80px 20px;
-      background:linear-gradient(to bottom,#1b0a12,#2b0f1d);
+    /* ---------- MOBILE ---------- */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 3.4rem; }
+      .hero p { font-size: 1rem; line-height: 1.8; }
+      .hero-content { padding: 36px 20px; border-radius: 28px; }
+      .titulo-login { font-size: 2.5rem; }
+      .titulo-section h2, .mensagem-box h2 { font-size: 2.4rem; }
+      .galeria-section { padding: 60px 0; }
+      .foto-card { border-radius: 18px; }
+      .foto-card img { height: 220px; }
+      .mensagem-section { padding: 60px 14px; }
+      .mensagem-box { padding: 36px 20px; border-radius: 24px; }
+      .mensagem-box p { font-size: 1rem; line-height: 1.85; }
     }
-
-    .titulo-section{
-      text-align:center;
-      margin-bottom:50px;
-    }
-
-    .titulo-section h2{
-      font-size:3rem;
-      font-family:'Great Vibes', cursive;
-    }
-
-    .foto-card{
-      overflow:hidden;
-      border-radius:25px;
-      position:relative;
-      transition:.4s;
-      box-shadow:0 10px 25px rgba(0,0,0,.3);
-    }
-
-    .foto-card img{
-      width:100%;
-      height:320px;
-      object-fit:cover;
-      transition:.5s;
-    }
-
-    .foto-card:hover img{
-      transform:scale(1.08);
-    }
-
-    .foto-card::before{
-      content:"💖";
-      position:absolute;
-      top:15px;
-      right:15px;
-      z-index:2;
-      font-size:1.3rem;
-    }
-
-    /* MENSAGEM */
-
-    .mensagem-section{
-      padding:90px 20px;
-      background:#12070d;
-    }
-
-    .mensagem-box{
-      max-width:950px;
-      margin:auto;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.1);
-      padding:50px 35px;
-      border-radius:30px;
-      backdrop-filter:blur(10px);
-      box-shadow:0 10px 30px rgba(0,0,0,.35);
-    }
-
-    .mensagem-box p{
-      line-height:2;
-      color:#f0f0f0;
-      margin-bottom:25px;
-      font-size:1.05rem;
-    }
-
-    /* PLAYER */
-
-    .player{
-      position:fixed;
-      bottom:15px;
-      left:50%;
-      transform:translateX(-50%);
-      width:90%;
-      max-width:500px;
-      background:rgba(255,255,255,.12);
-      backdrop-filter:blur(10px);
-      padding:15px;
-      border-radius:20px;
-      z-index:999;
-      border:1px solid rgba(255,255,255,.15);
-      box-shadow:0 10px 25px rgba(0,0,0,.3);
-    }
-
-    .player audio{
-      width:100%;
-    }
-
-    /* FOOTER */
-
-    footer{
-      background:#0a0407;
-      text-align:center;
-      padding:40px 20px 120px;
-      color:#bbb;
-    }
-
-    /* ANIMAÇÕES */
-
-    @keyframes fadeUp{
-      from{
-        opacity:0;
-        transform:translateY(30px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    @keyframes fadeIn{
-      from{
-        opacity:0;
-      }
-      to{
-        opacity:1;
-      }
-    }
-
-    /* MOBILE */
-
-    @media(max-width:768px){
-
-      .hero h1{
-        font-size:3.5rem;
-      }
-
-      .titulo-login{
-        font-size:2.4rem;
-      }
-
-      .hero-content{
-        padding:35px 20px;
-      }
-
-      .mensagem-box{
-        padding:35px 20px;
-      }
-
-      .foto-card img{
-        height:250px;
-      }
-
-    }
-
   </style>
 </head>
 <body>
 
   <!-- LOGIN -->
   <section class="login-screen" id="loginScreen">
-
     <div class="login-card">
-
-      <h1 class="titulo-login">Nosso Amor 💖</h1>
-
-      <p class="sub-login">
-        Entre para acessar nosso cantinho especial ✨
-      </p>
+      <h1 class="titulo-login script">Nosso Amor 💖</h1>
+      <p class="sub-login">Entre para acessar nosso cantinho especial ✨</p>
 
       <div class="mb-3">
-        <input type="text" id="usuario" class="form-control" placeholder="Usuário">
+        <input type="text" id="usuario" class="form-control" placeholder="Usuário"
+               autocomplete="username" autocapitalize="none" autocorrect="off">
       </div>
 
-      <div class="mb-3">
-        <input type="password" id="senha" class="form-control" placeholder="Senha">
+      <div class="mb-3 senha-wrap">
+        <input type="password" id="senha" class="form-control" placeholder="Senha" autocomplete="current-password">
+        <button type="button" class="btn-olho" id="toggleSenha" aria-label="Mostrar senha">
+          <i class="bi bi-eye"></i>
+        </button>
       </div>
 
-      <button class="btn-love" onclick="login()">
-        <i class="bi bi-heart-fill"></i>
-        Entrar
+      <button class="btn-love" id="btnEntrar" type="button">
+        <i class="bi bi-heart-fill"></i> Entrar
       </button>
 
-      <div class="erro" id="erro">
-        Usuário ou senha incorretos 💔
-      </div>
-
+      <div class="erro" id="erro">Usuário ou senha incorretos 💔</div>
     </div>
-
   </section>
 
   <!-- SITE -->
   <div id="site">
 
-    <!-- HERO -->
     <section class="hero">
-
       <div class="hero-content">
-
-        <h1>Quezia & Daniel 💕</h1>
-
+        <h1 class="script">Quezia &amp; Daniel 💕</h1>
         <p>
-          8 meses ao lado da pessoa mais especial da minha vida.
+          1 ano ao lado da pessoa mais especial da minha vida.
           Cada momento ao seu lado transformou meus dias em algo mais leve,
           bonito e cheio de sentido.
         </p>
-
-        <div class="contador">
-          ❤️ 8 meses de amor verdadeiro ❤️
-        </div>
-
+        <div class="contador">❤️ 1 ano de amor verdadeiro ❤️</div>
+        <div class="coracao"><i class="bi bi-heart-fill"></i></div>
       </div>
-
     </section>
 
-    <!-- GALERIA -->
-    <!-- GALERIA -->
-<section class="galeria-section">
-
-  <div class="container">
-
-    <div class="titulo-section">
-      <h2>Nossos Momentos ✨</h2>
-    </div>
-
-    <div class="row g-4">
-
-      <!-- FOTO 01 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto01.jpeg" alt="Foto 01">
+    <section class="galeria-section">
+      <div class="container">
+        <div class="titulo-section">
+          <h2 class="script">Nossos Momentos ✨</h2>
+        </div>
+        <div class="row g-3 g-md-4">
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="0" aria-label="Abrir foto 01">
+            <img src="foto01.jpeg" alt="Foto 01" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="1" aria-label="Abrir foto 02">
+            <img src="foto02.jpeg" alt="Foto 02" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="2" aria-label="Abrir foto 03">
+            <img src="foto03.jpeg" alt="Foto 03" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="3" aria-label="Abrir foto 04">
+            <img src="foto04.jpeg" alt="Foto 04" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="4" aria-label="Abrir foto 05">
+            <img src="foto05.jpeg" alt="Foto 05" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="5" aria-label="Abrir foto 06">
+            <img src="foto06.jpeg" alt="Foto 06" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="6" aria-label="Abrir foto 07">
+            <img src="foto07.jpeg" alt="Foto 07" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="7" aria-label="Abrir foto 08">
+            <img src="foto08.jpeg" alt="Foto 08" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="8" aria-label="Abrir foto 09">
+            <img src="foto09.jpeg" alt="Foto 09" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="9" aria-label="Abrir foto 10">
+            <img src="foto10.jpeg" alt="Foto 10" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="10" aria-label="Abrir foto 11">
+            <img src="foto11.jpeg" alt="Foto 11" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="11" aria-label="Abrir foto 12">
+            <img src="foto12.jpeg" alt="Foto 12" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="12" aria-label="Abrir foto 13">
+            <img src="foto13.jpeg" alt="Foto 13" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="13" aria-label="Abrir foto 14">
+            <img src="foto14.jpeg" alt="Foto 14" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="14" aria-label="Abrir foto 15">
+            <img src="foto15.jpeg" alt="Foto 15" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="15" aria-label="Abrir foto 16">
+            <img src="foto16.jpeg" alt="Foto 16" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="16" aria-label="Abrir foto 17">
+            <img src="foto17.jpeg" alt="Foto 17" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="17" aria-label="Abrir foto 18">
+            <img src="foto18.jpeg" alt="Foto 18" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="18" aria-label="Abrir foto 19">
+            <img src="foto19.jpeg" alt="Foto 19" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="19" aria-label="Abrir foto 20">
+            <img src="foto20.jpeg" alt="Foto 20" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="20" aria-label="Abrir foto 21">
+            <img src="foto21.jpeg" alt="Foto 21" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="21" aria-label="Abrir foto 22">
+            <img src="foto22.jpeg" alt="Foto 22" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="22" aria-label="Abrir foto 23">
+            <img src="foto23.jpeg" alt="Foto 23" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="23" aria-label="Abrir foto 24">
+            <img src="foto24.jpeg" alt="Foto 24" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="24" aria-label="Abrir foto 25">
+            <img src="foto25.jpeg" alt="Foto 25" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="25" aria-label="Abrir foto 26">
+            <img src="foto26.jpeg" alt="Foto 26" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="26" aria-label="Abrir foto 27">
+            <img src="foto27.jpeg" alt="Foto 27" loading="lazy">
+          </button>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <button class="foto-card" type="button" data-i="27" aria-label="Abrir foto 28">
+            <img src="foto28.jpeg" alt="Foto 28" loading="lazy">
+          </button>
+        </div>
         </div>
       </div>
+    </section>
 
-      <!-- FOTO 02 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto02.jpeg" alt="Foto 02">
-        </div>
-      </div>
-
-      <!-- FOTO 03 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto03.jpeg" alt="Foto 03">
-        </div>
-      </div>
-
-      <!-- FOTO 04 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto04.jpeg" alt="Foto 04">
-        </div>
-      </div>
-
-      <!-- FOTO 05 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto05.jpeg" alt="Foto 05">
-        </div>
-      </div>
-
-      <!-- FOTO 06 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto06.jpeg" alt="Foto 06">
-        </div>
-      </div>
-
-      <!-- FOTO 07 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto07.jpeg" alt="Foto 07">
-        </div>
-      </div>
-
-      <!-- FOTO 08 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto08.jpeg" alt="Foto 08">
-        </div>
-      </div>
-
-      <!-- FOTO 09 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto09.jpeg" alt="Foto 09">
-        </div>
-      </div>
-
-      <!-- FOTO 10 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto10.jpeg" alt="Foto 10">
-        </div>
-      </div>
-
-      <!-- FOTO 11 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto11.jpeg" alt="Foto 11">
-        </div>
-      </div>
-
-      <!-- FOTO 12 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto12.jpeg" alt="Foto 12">
-        </div>
-      </div>
-
-      <!-- FOTO 13 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto13.jpeg" alt="Foto 13">
-        </div>
-      </div>
-
-      <!-- FOTO 14 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto14.jpeg" alt="Foto 14">
-        </div>
-      </div>
-
-      <!-- FOTO 15 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto15.jpeg" alt="Foto 15">
-        </div>
-      </div>
-
-      <!-- FOTO 16 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto16.jpeg" alt="Foto 16">
-        </div>
-      </div>
-
-      <!-- FOTO 17 -->
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="foto-card">
-          <img src="foto17.jpeg" alt="Foto 17">
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-    <!-- MENSAGEM -->
     <section class="mensagem-section">
-
       <div class="mensagem-box">
-
-        <h2 class="text-center mb-5" style="font-family: 'Great Vibes', cursive; font-size:3rem;">
-          Para Você 💌
-        </h2>
+        <h2 class="script">Para Você 💌</h2>
 
         <p>
-          Hoje celebramos nossos <strong>8 meses de namoro</strong>.
+          Hoje celebramos nosso <strong>primeiro ano de namoro</strong>.
           Parece pouco para quem vê de fora, mas para mim,
           cada segundo ao seu lado vale uma vida inteira.
         </p>
-
         <p>
           Você trouxe paz para meus dias,
           luz para meus pensamentos
           e sentido para coisas que antes pareciam vazias.
         </p>
-
         <p>
           Obrigado por cada risada,
           cada abraço,
           cada conversa,
           cada momento inesquecível.
         </p>
-
         <p>
           Você é meu lugar favorito no mundo.
           Minha melhor escolha.
           Meu raio de luz nos dias difíceis.
         </p>
-
         <p>
           Eu escolheria você mil vezes,
           em mil vidas diferentes.
         </p>
-
-        <p class="text-center mt-5">
-          <strong>
-            Eu te amo infinitamente 💖
-          </strong>
-        </p>
-
-        <p class="text-center">
-          — Daniel ✨
-        </p>
-
+        <p class="text-center mt-5"><strong>Eu te amo infinitamente 💖</strong></p>
+        <p class="assinatura script">— Daniel ✨</p>
       </div>
-
     </section>
 
-    <!-- PLAYER -->
+    <!-- PLAYER (controles nativos: play/pause, tempo, volume) -->
     <div class="player">
-
-      <audio controls autoplay loop>
-        <source src="musica.mp3" type="audio/mp3">
+      <audio id="musica" controls loop preload="auto">
+        <source src="musica.mp3" type="audio/mpeg">
       </audio>
-
     </div>
 
-    <!-- FOOTER -->
-    <footer>
-
-      Feito com amor por Daniel para Quezia 💘
-
-    </footer>
-
+    <footer>Feito com amor por Daniel para Quezia 💘</footer>
   </div>
 
+  <!-- LIGHTBOX -->
+  <div class="modal fade" id="lightbox" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen m-0">
+      <div class="modal-content lightbox">
+        <div class="lb-body">
+          <button class="lb-btn lb-close" type="button" data-bs-dismiss="modal" aria-label="Fechar"><i class="bi bi-x-lg"></i></button>
+          <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Foto anterior"><i class="bi bi-chevron-left"></i></button>
+          <img id="lbImg" src="" alt="">
+          <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Próxima foto"><i class="bi bi-chevron-right"></i></button>
+          <div class="lb-count" id="lbCount"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    const USUARIO = "origem";
+    const SENHA   = "28092026";
 
-function login(){
+    const $ = (id) => document.getElementById(id);
 
-  // remove espaços e converte para minúsculo
-  const usuario = document
-    .getElementById("usuario")
-    .value
-    .trim()
-    .toLowerCase();
+    /* ----- login ----- */
+    function login() {
+      const usuario = $("usuario").value.trim().toLowerCase();
+      const senha   = $("senha").value.trim();
 
-  // remove espaços no começo/fim da senha
-  const senha = document
-    .getElementById("senha")
-    .value
-    .trim();
+      if (usuario === USUARIO && senha === SENHA) {
+        $("loginScreen").style.display = "none";
+        $("site").style.display = "block";
+        window.scrollTo(0, 0);
+        // o clique em "Entrar" libera o som no navegador
+        $("musica").play().catch(() => {});
+      } else {
+        $("erro").style.display = "block";
+      }
+    }
 
-  // login correto
-  if(usuario === "origem" && senha === "28092026"){
+    $("btnEntrar").addEventListener("click", login);
+    ["usuario", "senha"].forEach((id) =>
+      $(id).addEventListener("keydown", (e) => { if (e.key === "Enter") login(); })
+    );
+    $("toggleSenha").addEventListener("click", () => {
+      const campo = $("senha");
+      const mostrar = campo.type === "password";
+      campo.type = mostrar ? "text" : "password";
+      $("toggleSenha").innerHTML = `<i class="bi bi-${mostrar ? "eye-slash" : "eye"}"></i>`;
+    });
 
-    document.getElementById("loginScreen").style.display = "none";
-    document.getElementById("site").style.display = "block";
+    /* ----- galeria / lightbox ----- */
+    const cards = [...document.querySelectorAll(".foto-card")];
+    const modal = new bootstrap.Modal($("lightbox"));
+    let atual = 0;
 
-  }else{
+    function mostrar(i) {
+      atual = (i + cards.length) % cards.length;
+      const img = cards[atual].querySelector("img");
+      $("lbImg").src = img.src;
+      $("lbImg").alt = img.alt;
+      $("lbCount").textContent = `${atual + 1} / ${cards.length}`;
+    }
 
-    document.getElementById("erro").style.display = "block";
+    cards.forEach((c, i) => c.addEventListener("click", () => { mostrar(i); modal.show(); }));
+    $("lbPrev").addEventListener("click", () => mostrar(atual - 1));
+    $("lbNext").addEventListener("click", () => mostrar(atual + 1));
 
-  }
+    document.addEventListener("keydown", (e) => {
+      if (!$("lightbox").classList.contains("show")) return;
+      if (e.key === "ArrowLeft")  mostrar(atual - 1);
+      if (e.key === "ArrowRight") mostrar(atual + 1);
+    });
 
-}
-
+    // deslizar o dedo para trocar de foto
+    let x0 = null;
+    $("lightbox").addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+    $("lightbox").addEventListener("touchend", (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) mostrar(atual + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
   </script>
-
 </body>
 </html>
